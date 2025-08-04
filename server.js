@@ -13,7 +13,7 @@ app.get("/api/location", async (req, res) => {
       req.socket.remoteAddress;
 
   
-    const geoRes = await fetch(`https://ipinfo.co/${ip}/json/`);
+    const geoRes = await fetch(`https://ipinfo.io/${ip}/json/`);
     const data = await geoRes.json();
 
     res.json({
