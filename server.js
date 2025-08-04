@@ -17,12 +17,7 @@ app.get("/api/location", async (req, res) => {
     const data = await geoRes.json();
 
     res.json({
-      ip,
-      city: data.city,
-      region: data.region,
-      country: data.country_name,
-      latitude: data.latitude,
-      longitude: data.longitude,
+      data
     });
   } catch (error) {
     console.error(error);
