@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IP Location App</title>
+  </head>
+  <body>
+    <h1>User Location from IP</h1>
+    <pre id="output">Loading...</pre>
+
+    <script>
+      fetch("/api/location")
+        .then((res) => res.json())
+        .then((data) => {
+          document.getElementById("output").textContent = JSON.stringify(
+            data,
+            null,
+            2
+          );
+
+          // Save locally for future visits
+          localStorage.setItem("lastLocation", JSON.stringify(data));
+        })
+        .catch((err) => {
+          document.getElementById("output").textContent = "Error: " + err;
+        });
+    </script>
+  </body>
+</html>
