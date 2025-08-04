@@ -12,13 +12,7 @@ app.get("/api/location", async (req, res) => {
       req.headers["x-forwarded-for"]?.split(",")[0] ||
       req.socket.remoteAddress;
 
-    // Handle local testing: if localhost IP, fetch public IP
-    if (ip === "::1" || ip.startsWith("127.") || ip.startsWith("::ffff:127")) {
-      const ipRes = await fetch("https://api.ipify.org?format=json");
-      const ipData = await ipRes.json();
-      ip = ipData.ip;
-    }
-
+  
     const geoRes = await fetch(`https://ipapi.co/${ip}/json/`);
     const data = await geoRes.json();
 
